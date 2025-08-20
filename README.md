@@ -8,6 +8,36 @@ This project provides a FastAPI-based REST API for sentiment analysis in English
 - Combines predictions from primary and multilingual models
 - Returns confidence scores and model details
 
+## Design Choices & Rationale
+
+### Model Selection
+- **Arabic:** [CAMeL-Lab/bert-base-arabic-camelbert-da-sentiment] was chosen for its strong performance on Arabic sentiment tasks and its dedicated training on Arabic data, ensuring high accuracy and robust handling of Arabic text.
+- **English:** [mrm8488/deberta-v3-small-finetuned-sst2] is a compact, fast, and accurate model for English sentiment analysis, fine-tuned on SST-2, making it suitable for real-time inference and resource-constrained environments.
+- **Multilingual:** [cardiffnlp/twitter-xlm-roberta-base-sentiment] provides coverage for both languages and acts as a secondary vote, improving robustness and handling edge cases or mixed-language input.
+
+These models were selected for their balance of inference speed, size, and language-specific performance. No custom training or fine-tuning was performed, as open-source models are sufficient for this use case.
+
+### Frameworks & Libraries
+- **Transformers (HuggingFace):** Industry-standard for NLP, supports easy local model loading, fast inference, and a wide range of pre-trained models.
+- **FastAPI:** Chosen for its speed, simplicity, and automatic OpenAPI documentation, making it ideal for production-ready REST APIs.
+- **PyTorch:** Used as the backend for model inference, providing efficient computation and compatibility with HuggingFace models.
+
+### Hardware Considerations
+- **CPU:** The selected models are small enough to run efficiently on modern CPUs for moderate workloads. For batch or high-throughput scenarios, a CPU with at least 4 cores and 16GB RAM is recommended.
+
+
+### LLM Choice Rationale
+- **Inference Speed:** All selected models are optimized for fast inference, with small parameter sizes and efficient architectures.
+- **Size:** Models are small enough to fit in memory on most consumer hardware, avoiding the need for expensive infrastructure.
+- **Arabic Performance:** The CAMeL-Lab model is specifically designed for Arabic, outperforming generic multilingual models on Arabic sentiment tasks.
+
+### Summary
+This solution prioritizes:
+- High accuracy for both English and Arabic
+- Fast inference and low resource requirements
+- Robustness via model ensembling
+- Easy deployment on both CPU and GPU
+
 ## Setup
 
 1. **Clone the repository**
