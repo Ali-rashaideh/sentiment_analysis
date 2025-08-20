@@ -93,6 +93,47 @@ curl --location 'http://127.0.0.1:8000/predict' \
 
 ## Output
 The response will be a JSON object containing the sentiment analysis results for each input text, including the predicted label, confidence, and model details.
+### Example Output:
+```bash
+        {
+            "sentence": "كان العميل يواجه صعوبة في سماع الوكيل أثناء المكالمة بسبب انخفاض مستوى الصوت. وافق الوكيل على إرسال رسالة نصية عبر تطبيق واتساب وأبدى العميل امتنانه بينما ينتظر اتصالاً معاوداً",
+            "final_label": "positive",
+            "final_confidence": 0.5941414616709052,
+            "final_margin": 0.37070129738553703,
+            "vote_weights": {
+                "primary": 0.6,
+                "secondary": 0.4
+            },
+            "used_models": [
+                "arabic",
+                "multi"
+            ],
+            "best_model": "arabic",
+            "best_model_confidence": 0.9577555972435603,
+            "per_model": [
+                {
+                    "model": "arabic",
+                    "label": "positive",
+                    "scores": {
+                        "positive": 0.9577555972435603,
+                        "natural": 0.039879929346705575,
+                        "negative": 0.002364473409734113
+                    }
+                },
+                {
+                    "model": "multi",
+                    "label": "negative",
+                    "scores": {
+                        "positive": 0.048720258311922504,
+                        "natural": 0.3962260410892583,
+                        "negative": 0.5550537005988192
+                    }
+                }
+            ]
+        }
+    ]
+}
+```
 
 ## File Structure
 - `api.py`: FastAPI server
