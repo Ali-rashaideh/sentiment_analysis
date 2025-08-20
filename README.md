@@ -41,6 +41,9 @@ This solution prioritizes:
 ## Setup
 
 1. **Clone the repository**
+   ```powershell
+   git clone https://github.com/Ali-rashaideh/sentiment_analysis.git
+   ```
 2. **Install dependencies**
    
    ```powershell
