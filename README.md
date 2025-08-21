@@ -38,6 +38,18 @@ This solution prioritizes:
 - Robustness via model ensembling
 - Easy deployment on both CPU and GPU
 
+## Project Structure
+
+```
+code/
+    api.py # this is the controller
+    downloader.py # run this ro create a dir to download models
+    models.py # main functions and modleing
+    models/ # models
+        arabic/
+        english/
+        multi/
+```
 ## Setup
 
 1. **Clone the repository**
